@@ -50,6 +50,7 @@ public class NewGameButton extends MyButton implements ActionListener {
       if (boardType != null) {
         parentWindow.dispose();
         JFrame gameWindow = new JFrame("Pacman Game");
+
         gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Board board = BoardFactory.createBoard(boardSize, boardType);

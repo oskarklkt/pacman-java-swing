@@ -8,6 +8,7 @@ import java.awt.*;
 
 public class FortressBoard extends Board {
   public FortressBoard(BoardSize boardSize) {
+    //todo, daj rozmiar ktorego jeszcze nie bylo
     super(boardSize, BoardType.FORTRESS, 15, 15);
     setLayout(new BorderLayout());
 
