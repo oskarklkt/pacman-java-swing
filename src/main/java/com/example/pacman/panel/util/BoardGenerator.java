@@ -31,7 +31,6 @@ public class BoardGenerator {
             }
             gridPanel.add(label);
         }
-
         return gridPanel;
     }
 }

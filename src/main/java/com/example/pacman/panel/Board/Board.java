@@ -13,10 +13,15 @@ public abstract class Board extends JPanel {
   private final BoardType boardType;
   private final BoardSize boardSize;
 
-  public Board(BoardSize boardSize, BoardType boardType) {
+  private final int numberOfYBlocks;
+  private final int numberOfXBlocks;
+
+  public Board(BoardSize boardSize, BoardType boardType, int numberOfYBlocks, int numberOfXBlocks) {
     this.boardSize = boardSize;
     this.boardType = boardType;
-    setPreferredSize(new Dimension(boardSize.getWidth(), boardSize.getHeight()));
+      this.numberOfYBlocks = numberOfYBlocks;
+      this.numberOfXBlocks = numberOfXBlocks;
+      setPreferredSize(new Dimension(boardSize.getWidth(), boardSize.getHeight()));
     setLayout(new BorderLayout());
   }
 
@@ -26,5 +31,13 @@ public abstract class Board extends JPanel {
 
   public BoardSize getBoardSize() {
     return boardSize;
+  }
+
+  public int getNumberOfYBlocks() {
+    return numberOfYBlocks;
+  }
+
+  public int getNumberOfXBlocks() {
+    return numberOfXBlocks;
   }
 }

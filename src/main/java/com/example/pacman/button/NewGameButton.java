@@ -2,6 +2,7 @@ package com.example.pacman.button;
 
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
+import com.example.pacman.panel.Board.Board;
 import com.example.pacman.panel.util.BoardFactory;
 import com.example.pacman.window.MenuWindow;
 
@@ -13,7 +14,8 @@ public class NewGameButton extends MyButton implements ActionListener {
   private final JFrame parentWindow;
 
   public NewGameButton(JFrame parentWindow) {
-    super("New Game");;
+    super("New Game");
+    ;
     this.parentWindow = parentWindow;
     addActionListener(this);
   }
@@ -48,11 +50,24 @@ public class NewGameButton extends MyButton implements ActionListener {
       if (boardType != null) {
         parentWindow.dispose();
         JFrame gameWindow = new JFrame("Pacman Game");
-        gameWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel board = BoardFactory.createBoard(boardSize, boardType);
+        Board board = BoardFactory.createBoard(boardSize, boardType);
+
+        // some calculations to make game window sizing correct
+        float xRatio =
+            (float) board.getNumberOfXBlocks()
+                / (board.getNumberOfYBlocks() + board.getNumberOfXBlocks());
+        float yRatio =
+            (float) board.getNumberOfYBlocks()
+                / (board.getNumberOfYBlocks() + board.getNumberOfXBlocks());
+
+        int width = Math.round((boardSize.getWidth() + boardSize.getHeight()) * xRatio);
+        int height = Math.round((boardSize.getWidth() + boardSize.getHeight()) * yRatio);
+
+        gameWindow.setSize(width, height);
         gameWindow.add(board);
-        gameWindow.pack();
+        gameWindow.setVisible(true);
 
         gameWindow.setLocationRelativeTo(null);
         gameWindow.setVisible(true);
