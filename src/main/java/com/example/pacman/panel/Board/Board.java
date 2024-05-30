@@ -7,13 +7,24 @@ import javax.swing.*;
 import java.awt.*;
 
 public abstract class Board extends JPanel {
-    BoardType boardType;
-    BoardSize boardSize;
+  protected final char WALL = 'W';
+  protected final char EMPTY = 'E';
+  protected final char FOOD = 'F';
+  private final BoardType boardType;
+  private final BoardSize boardSize;
 
-    public Board(BoardSize boardSize, BoardType boardType) {
-        this.boardSize = boardSize;
-        this.boardType = boardType;
-        setPreferredSize(new Dimension(boardSize.getWidth(), boardSize.getHeight()));
-        setLayout(new BorderLayout());
-    }
+  public Board(BoardSize boardSize, BoardType boardType) {
+    this.boardSize = boardSize;
+    this.boardType = boardType;
+    setPreferredSize(new Dimension(boardSize.getWidth(), boardSize.getHeight()));
+    setLayout(new BorderLayout());
+  }
+
+  public BoardType getBoardType() {
+    return boardType;
+  }
+
+  public BoardSize getBoardSize() {
+    return boardSize;
+  }
 }

@@ -2,12 +2,43 @@ package com.example.pacman.panel.Board;
 
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
+import com.example.pacman.panel.util.BoardGenerator;
 
 import java.awt.*;
 
 public class LabyrinthBoard extends Board {
+  private final char[] board = {
+    WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL,
+    FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, WALL, FOOD,
+    FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, WALL, WALL, FOOD, WALL,
+    FOOD, WALL, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, WALL, WALL, FOOD, WALL, FOOD,
+    FOOD, FOOD, WALL, FOOD, FOOD, FOOD, WALL, FOOD, FOOD, FOOD, WALL, WALL, WALL, WALL, WALL, FOOD,
+    WALL, WALL, WALL, WALL, FOOD, WALL, WALL, WALL, FOOD, WALL, WALL, FOOD, FOOD, FOOD, WALL, FOOD,
+    FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, WALL, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL,
+    FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, WALL, FOOD, WALL, FOOD, FOOD, FOOD, WALL, FOOD,
+    FOOD, FOOD, WALL, FOOD, FOOD, FOOD, WALL, WALL, FOOD, WALL, FOOD, WALL, FOOD, FOOD, FOOD, WALL,
+    FOOD, FOOD, FOOD, WALL, FOOD, WALL, WALL, FOOD, WALL, FOOD, FOOD, FOOD, WALL, FOOD, FOOD, FOOD,
+    WALL, FOOD, WALL, FOOD, WALL, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL,
+    FOOD, WALL, FOOD, WALL, WALL, FOOD, FOOD, FOOD, WALL, FOOD, FOOD, FOOD, FOOD, FOOD, WALL, FOOD,
+    WALL, FOOD, WALL, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, FOOD,
+    FOOD, WALL, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD,
+    WALL, WALL, FOOD, WALL, FOOD, WALL, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, WALL,
+    WALL, FOOD, WALL, FOOD, FOOD, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, WALL, WALL,
+    FOOD, WALL, FOOD, WALL, FOOD, WALL, FOOD, FOOD, FOOD, WALL, FOOD, WALL, FOOD, WALL, WALL, FOOD,
+    FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, FOOD, WALL, WALL, WALL, WALL,
+    WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL
+  };
 
-    public LabyrinthBoard(BoardSize boardSize) {
-        super(boardSize, BoardType.LABYRINTH);
-    }
+  public LabyrinthBoard(BoardSize boardSize) {
+    super(boardSize, BoardType.LABYRINTH);
+    setLayout(new BorderLayout());
+
+    int numberOfYBlocks = 20;
+    int numberOfXBlocks = 15;
+
+    add(
+        BoardGenerator.generateBoard(
+            board, numberOfYBlocks, numberOfXBlocks, boardSize, Color.GRAY),
+        BorderLayout.CENTER);
+  }
 }

@@ -5,15 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HighScoresButton extends JButton implements ActionListener {
-    public HighScoresButton(){
-        super("High Scores");
-        setBackground(Color.BLUE);
-        setForeground(Color.WHITE);
-    }
+public class HighScoresButton extends MyButton implements ActionListener {
+  public HighScoresButton() {
+    super("High Scores");
+  }
 
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-
-    }
+  @Override
+  public void actionPerformed(ActionEvent actionEvent) {}
 }

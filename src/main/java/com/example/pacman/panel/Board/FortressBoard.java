@@ -6,7 +6,7 @@ import com.example.pacman.enumeration.BoardType;
 import java.awt.*;
 
 public class FortressBoard extends Board {
-    public FortressBoard(BoardSize boardSize) {
-        super(boardSize, BoardType.FORTRESS);
-    }
+  public FortressBoard(BoardSize boardSize) {
+    super(boardSize, BoardType.FORTRESS);
+  }
 }

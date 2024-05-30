@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class CastleBoard extends Board {
 
-    public CastleBoard(BoardSize boardSize) {
-        super(boardSize, BoardType.CASTLE);
-    }
+  public CastleBoard(BoardSize boardSize) {
+    super(boardSize, BoardType.CASTLE);
+  }
 }
