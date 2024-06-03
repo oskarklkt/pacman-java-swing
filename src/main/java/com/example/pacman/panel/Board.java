@@ -3,6 +3,7 @@ package com.example.pacman.panel;
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
 import com.example.pacman.util.BoardGenerator;
+import com.example.pacman.character.Pacman;
 
 import javax.swing.*;
 import java.awt.*;
@@ -80,8 +81,7 @@ public abstract class Board extends JPanel {
           break;
         case 'P':
           label.setBackground(Color.BLACK);
-          ImageIcon pacmanIcon = new ImageIcon(boardSize.getPhotosUrl() + "/pacman_right_open.png"); // This will be updated by Pacman class
-          label.setIcon(pacmanIcon);
+          label.setIcon(null); // Remove the icon from the label as we will add Pacman as a component
           break;
         case 'E':
           label.setBackground(Color.BLACK);
@@ -94,5 +94,35 @@ public abstract class Board extends JPanel {
       }
       System.out.println("Updated cell (" + x + ", " + y + ") to " + board[y][x]); // Debug statement
     }
+  }
+
+  public int getCellWidth() {
+    return getWidth() / numberOfXBlocks;
+  }
+
+  public int getCellHeight() {
+    return getHeight() / numberOfYBlocks;
+  }
+
+  public void movePacman(Pacman pacman, int newX, int newY) {
+    int oldX = pacman.getPacmanX();
+    int oldY = pacman.getPacmanY();
+
+    // Remove Pacman from the old cell
+    JLabel oldLabel = (JLabel) gridPanel.getComponent(oldY * numberOfXBlocks + oldX);
+    oldLabel.removeAll(); // Clear all components from the old cell
+    oldLabel.revalidate();
+    oldLabel.repaint();
+
+    // Add Pacman to the new cell
+    JLabel newLabel = (JLabel) gridPanel.getComponent(newY * numberOfXBlocks + newX);
+    newLabel.setLayout(new BorderLayout());
+    newLabel.add(pacman, BorderLayout.CENTER);
+
+    // Revalidate and repaint to update the changes
+    newLabel.revalidate();
+    newLabel.repaint();
+
+    System.out.println("Moved Pacman from (" + oldX + ", " + oldY + ") to (" + newX + ", " + newY + ")"); // Debug statement
   }
 }
