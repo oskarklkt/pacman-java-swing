@@ -83,21 +83,18 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
                 newX++;
                 break;
         }
+        updateImage();// Update the image immediately after direction change
         System.out.println("Trying to move Pacman to (" + newX + ", " + newY + ")"); // Debug statement
         if (newX >= 0 && newX < board[0].length && newY >= 0 && newY < board.length && board[newY][newX] != 'W') {
             if (board[newY][newX] == 'F') {
                 board[newY][newX] = 'E';
             }
-            board[y][x] = 'E';  // Clear the current position
-            parent.updateCell(x, y);  // Update the old cell
+            board[y][x] = 'E';
             x = newX;
             y = newY;
-            board[y][x] = 'P';  // Update Pacman's new position
-            parent.updateCell(newX, newY); // Update the new cell
-            parent.movePacman(this, newX, newY); // Move Pacman to the new cell on the board
-            System.out.println("Moved Pacman to (" + x + ", " + y + ")"); // Debug statement
+            board[y][x] = 'P';
+            parent.generate();
         }
-        updateImage(); // Ensure image updates on direction change
     }
 
     @Override
