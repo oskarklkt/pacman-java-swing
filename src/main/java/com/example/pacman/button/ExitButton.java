@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ExitButton extends MyButton implements ActionListener {
+public class ExitButton extends Button implements ActionListener {
   private final JFrame parentWindow;
 
   public ExitButton(JFrame parentWindow) {

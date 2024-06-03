@@ -1,8 +1,8 @@
-package com.example.pacman.panel.util;
+package com.example.pacman.util;
 
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
-import com.example.pacman.panel.Board.*;
+import com.example.pacman.panel.*;
 
 public class BoardFactory {
   public static Board createBoard(BoardSize size, BoardType type) {

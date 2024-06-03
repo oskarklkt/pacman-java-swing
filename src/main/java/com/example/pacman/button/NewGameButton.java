@@ -2,20 +2,20 @@ package com.example.pacman.button;
 
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
-import com.example.pacman.panel.Board.Board;
-import com.example.pacman.panel.util.BoardFactory;
+import com.example.pacman.panel.Board;
+import com.example.pacman.util.BoardFactory;
 import com.example.pacman.window.MenuWindow;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class NewGameButton extends MyButton implements ActionListener {
+public class NewGameButton extends Button implements ActionListener {
   private final JFrame parentWindow;
 
   public NewGameButton(JFrame parentWindow) {
     super("New Game");
-    ;
+
     this.parentWindow = parentWindow;
     addActionListener(this);
   }

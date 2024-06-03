@@ -9,13 +9,12 @@ import java.awt.*;
 
 public class MenuWindow extends JFrame {
   public MenuWindow() {
-    LayoutManager layout = new GridLayout(3, 1);
 
     setTitle("Pacman Game");
-    setSize(400, 300);
+    setSize(800, 600);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
-    setLayout(layout);
+    setLayout(new GridLayout(3, 1));
     setVisible(true);
 
     JButton newGameButton = new NewGameButton(this);
