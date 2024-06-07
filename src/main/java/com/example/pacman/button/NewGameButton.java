@@ -4,7 +4,6 @@ import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
 import com.example.pacman.panel.Board;
 import com.example.pacman.util.BoardFactory;
-import com.example.pacman.window.MenuWindow;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -68,18 +67,8 @@ public class NewGameButton extends Button implements ActionListener {
 
         gameWindow.setSize(width, height);
         gameWindow.add(board);
-        gameWindow.setVisible(true);
-
         gameWindow.setLocationRelativeTo(null);
         gameWindow.setVisible(true);
-
-        gameWindow.addWindowListener(
-            new java.awt.event.WindowAdapter() {
-              @Override
-              public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                SwingUtilities.invokeLater(MenuWindow::new);
-              }
-            });
       } else {
         JOptionPane.showMessageDialog(
             parentWindow, "Please, choose a board type.", "Warning", JOptionPane.WARNING_MESSAGE);

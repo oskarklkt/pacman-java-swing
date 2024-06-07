@@ -80,11 +80,12 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
                 break;
             case KeyEvent.VK_RIGHT:
                 currentDirection = Direction.RIGHT;
+
                 newX++;
                 break;
         }
-        updateImage();// Update the image immediately after direction change
-        System.out.println("Trying to move Pacman to (" + newX + ", " + newY + ")"); // Debug statement
+        System.out.println(currentDirection);
+        updateImage();
         if (newX >= 0 && newX < board[0].length && newY >= 0 && newY < board.length && board[newY][newX] != 'W') {
             if (board[newY][newX] == 'F') {
                 board[newY][newX] = 'E';
@@ -102,12 +103,4 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
 
     @Override
     public void keyTyped(KeyEvent e) {}
-
-    public int getPacmanX() {
-        return x;
-    }
-
-    public int getPacmanY() {
-        return y;
-    }
 }

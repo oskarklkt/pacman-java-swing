@@ -27,7 +27,7 @@ public class ClassicBoard extends Board {
             {'W', 'F', 'W', 'F', 'W', 'F', 'W', 'W', 'W', 'F', 'W', 'F', 'W', 'F', 'W'},
             {'W', 'F', 'F', 'F', 'W', 'F', 'F', 'W', 'F', 'F', 'W', 'F', 'F', 'F', 'W'},
             {'W', 'F', 'W', 'W', 'W', 'W', 'F', 'W', 'F', 'W', 'W', 'W', 'W', 'F', 'W'},
-            {'W', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'W'},
+            {'W', 'F', 'F', 'F', 'F', 'F', 'F', 'P', 'F', 'F', 'F', 'F', 'F', 'F', 'W'},
             {'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'}
     };
     setBoard(board);
