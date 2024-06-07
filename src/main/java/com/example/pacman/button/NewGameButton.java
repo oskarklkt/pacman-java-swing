@@ -30,7 +30,7 @@ public class NewGameButton extends Button implements ActionListener {
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 sizeOptions,
-                sizeOptions[0]);
+                sizeOptions[3]);
 
     if (boardSize != null) {
       BoardType[] boardOptions = BoardType.values();

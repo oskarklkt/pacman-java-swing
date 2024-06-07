@@ -25,7 +25,7 @@ public class ScorePanel extends JPanel implements Runnable {
                 increaseScore(1);
                 updateScoreCounter();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
     }
 

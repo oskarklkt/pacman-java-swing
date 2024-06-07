@@ -1,9 +1,11 @@
 package com.example.pacman.enumeration;
 
 public enum BoardSize {
+  VERY_SMALL("Very Small", 500, 500, "src/main/resources/images/16px"),
   SMALL("Small", 600, 600, "src/main/resources/images/16px"),
   MEDIUM("Medium", 800, 800, "src/main/resources/images/16px"),
-  LARGE("Large", 1000, 1000, "src/main/resources/images/32px");
+  LARGE("Large", 1000, 1000, "src/main/resources/images/32px"),
+  VERY_LARGE("Very Large", 1200, 1200, "src/main/resources/images/32px");
 
   private final String name;
   private final int width;
