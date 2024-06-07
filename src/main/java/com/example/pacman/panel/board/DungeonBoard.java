@@ -1,14 +1,14 @@
-package com.example.pacman.panel;
+package com.example.pacman.panel.board;
 
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
-import com.example.pacman.util.BoardGenerator;
+import com.example.pacman.window.GameWindow;
 
 import java.awt.*;
 
 public class DungeonBoard extends Board {
-  public DungeonBoard(BoardSize boardSize) {
-    super(boardSize, BoardType.DUNGEON, 15, 30);
+  public DungeonBoard(BoardSize boardSize, GameWindow parent) {
+    super(boardSize, BoardType.DUNGEON, 15, 30, parent);
     setLayout(new BorderLayout());
 
     char[][] board = {

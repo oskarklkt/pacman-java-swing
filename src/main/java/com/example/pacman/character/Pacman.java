@@ -2,7 +2,7 @@ package com.example.pacman.character;
 
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.Direction;
-import com.example.pacman.panel.Board;
+import com.example.pacman.panel.board.Board;
 
 import javax.swing.*;
 import java.awt.*;
@@ -80,14 +80,15 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
                 break;
             case KeyEvent.VK_RIGHT:
                 currentDirection = Direction.RIGHT;
-
                 newX++;
                 break;
         }
-        System.out.println(currentDirection);
+
         updateImage();
+
         if (newX >= 0 && newX < board[0].length && newY >= 0 && newY < board.length && board[newY][newX] != 'W') {
             if (board[newY][newX] == 'F') {
+                parent.addPointsForEatenFood();
                 board[newY][newX] = 'E';
             }
             board[y][x] = 'E';

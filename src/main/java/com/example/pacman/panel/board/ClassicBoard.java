@@ -1,15 +1,16 @@
-package com.example.pacman.panel;
+package com.example.pacman.panel.board;
 
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
-import com.example.pacman.util.BoardGenerator;
+import com.example.pacman.window.GameWindow;
+
 import java.awt.*;
 
 public class ClassicBoard extends Board {
 
 
-  public ClassicBoard(BoardSize boardSize) {
-    super(boardSize, BoardType.CLASSIC, 15, 15);
+  public ClassicBoard(BoardSize boardSize, GameWindow parent) {
+    super(boardSize, BoardType.CLASSIC, 15, 15, parent);
     setLayout(new BorderLayout());
 
 

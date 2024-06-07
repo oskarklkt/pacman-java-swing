@@ -1,9 +1,10 @@
-package com.example.pacman.panel;
+package com.example.pacman.panel.board;
 
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
 import com.example.pacman.util.BoardGenerator;
 import com.example.pacman.character.Pacman;
+import com.example.pacman.window.GameWindow;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,11 +20,14 @@ public abstract class Board extends JPanel {
   private char[][] board;
   private JPanel gridPanel;
 
-  public Board(BoardSize boardSize, BoardType boardType, int numberOfYBlocks, int numberOfXBlocks) {
+  private final GameWindow parent;
+
+  public Board(BoardSize boardSize, BoardType boardType, int numberOfYBlocks, int numberOfXBlocks, GameWindow parent) {
     this.boardSize = boardSize;
     this.boardType = boardType;
     this.numberOfYBlocks = numberOfYBlocks;
     this.numberOfXBlocks = numberOfXBlocks;
+    this.parent = parent;
     setPreferredSize(new Dimension(boardSize.getWidth(), boardSize.getHeight()));
     setLayout(new BorderLayout());
     this.requestFocusInWindow();
@@ -31,6 +35,11 @@ public abstract class Board extends JPanel {
 
   public BoardType getBoardType() {
     return boardType;
+  }
+
+  @Override
+  public GameWindow getParent() {
+    return parent;
   }
 
   public BoardSize getBoardSize() {
@@ -63,10 +72,14 @@ public abstract class Board extends JPanel {
 
   public void generate() {
     this.removeAll();
-    gridPanel = BoardGenerator.generateBoard(this, Color.DARK_GRAY);
+    gridPanel = BoardGenerator.generateBoard(this);
     this.add(gridPanel, BorderLayout.CENTER);
     gridPanel.setFocusable(true);
     gridPanel.requestFocusInWindow();
     this.revalidate();
+  }
+
+  public void addPointsForEatenFood() {
+    getParent().addPoints(10);
   }
 }

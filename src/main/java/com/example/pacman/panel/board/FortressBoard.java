@@ -1,14 +1,14 @@
-package com.example.pacman.panel;
+package com.example.pacman.panel.board;
 
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
-import com.example.pacman.util.BoardGenerator;
+import com.example.pacman.window.GameWindow;
 
 import java.awt.*;
 
 public class FortressBoard extends Board {
-  public FortressBoard(BoardSize boardSize) {
-    super(boardSize, BoardType.FORTRESS, 30, 10);
+  public FortressBoard(BoardSize boardSize, GameWindow parent) {
+    super(boardSize, BoardType.FORTRESS, 30, 10, parent);
     setLayout(new BorderLayout());
 
     char[][] board = {

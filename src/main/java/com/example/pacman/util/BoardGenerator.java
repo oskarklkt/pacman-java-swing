@@ -1,12 +1,12 @@
 package com.example.pacman.util;
 import com.example.pacman.character.Pacman;
-import com.example.pacman.panel.Board;
+import com.example.pacman.panel.board.Board;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class BoardGenerator {
-    public static JPanel generateBoard(Board board, Color wallsColor) {
+    public static JPanel generateBoard(Board board) {
         JPanel gridPanel = new JPanel(new GridLayout(board.getNumberOfYBlocks(), board.getNumberOfXBlocks()));
         gridPanel.setFocusable(true);
         gridPanel.requestFocusInWindow();
@@ -18,7 +18,7 @@ public class BoardGenerator {
 
                 switch (board.getBoard()[y][x]) {
                     case 'W':
-                        label.setBackground(wallsColor);
+                        label.setBackground(Color.BLUE);
                         label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                         break;
                     case 'F':
