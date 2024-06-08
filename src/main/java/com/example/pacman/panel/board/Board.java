@@ -1,10 +1,10 @@
 package com.example.pacman.panel.board;
 
 import com.example.pacman.character.Ghost;
+import com.example.pacman.character.Pacman;
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
 import com.example.pacman.util.BoardGenerator;
-import com.example.pacman.character.Pacman;
 import com.example.pacman.window.GameWindow;
 
 import javax.swing.*;
@@ -20,7 +20,7 @@ public abstract class Board extends JPanel {
   private Pacman pacman;
   private List<Ghost> ghosts = new ArrayList<>();
   private char[][] board;
-  private char[][] startingBoard;
+  protected char[][] startingBoard;
   private final GameWindow parent;
   private boolean needsRender = false;
 
@@ -30,7 +30,6 @@ public abstract class Board extends JPanel {
     this.numberOfYBlocks = numberOfYBlocks;
     this.numberOfXBlocks = numberOfXBlocks;
     this.parent = parent;
-    this.startingBoard = board;
     setPreferredSize(new Dimension(boardSize.getWidth(), boardSize.getHeight()));
     setLayout(new BorderLayout());
     this.requestFocusInWindow();
@@ -112,9 +111,15 @@ public abstract class Board extends JPanel {
   }
 
   public void restartMap() {
-    synchronized (board) {
-      board = startingBoard;
-      requestRender();
+    synchronized (this) {
+      // Reset the board to its initial state
+      for (int y = 0; y < startingBoard.length; y++) {
+        for (int x = 0; x < startingBoard[0].length; x++) {
+          board[y][x] = startingBoard[y][x];
+        }
+      }
+      pacman = null;
+      generate();  // Ensure board is generated with new instances of Pacman and ghosts
     }
   }
 

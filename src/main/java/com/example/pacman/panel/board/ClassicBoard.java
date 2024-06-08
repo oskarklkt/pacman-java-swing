@@ -32,6 +32,10 @@ public class ClassicBoard extends Board {
             {'W', 'F', 'F', 'F', 'F', 'F', 'F', 'P', 'F', 'F', 'F', 'F', 'F', 'F', 'W'},
             {'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'}
     };
+    startingBoard = new char[board.length][board[0].length];
+    for (int y = 0; y < board.length; y++) {
+      System.arraycopy(board[y], 0, startingBoard[y], 0, board[0].length);
+    }
     setBoard(board);
     generate();
   }

@@ -92,9 +92,10 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
                 if (board[newY][newX] == 'F') {
                     parent.addPointsForEatenFood();
                     board[newY][newX] = 'E';
-                } else if (board[y][x] == 'G' || board[newY][x] == 'G') {
+                } else if (board[newY][newX] == 'G') {
                     parent.decreaseLives();
                     parent.restartMap();
+                    return;
                 }
                 board[y][x] = 'E';
                 x = newX;

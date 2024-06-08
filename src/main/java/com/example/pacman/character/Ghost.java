@@ -12,7 +12,7 @@ public class Ghost extends JLabel implements Runnable {
     private final char[][] board;
     private int x, y;
     boolean isStopped;
-    private static int sleepTime = 1000;
+    private static int sleepTime = 200;
     private final Random random = new Random();
 
     public Ghost(Board parent, int x, int y) {
@@ -80,16 +80,19 @@ public class Ghost extends JLabel implements Runnable {
     }
 
     private boolean isOccupiedByAnotherGhost(int newX, int newY) {
-        return parent.getGhosts().stream().anyMatch(ghost -> ghost != this && ghost.getX() == newX && ghost.getY() == newY);
+        return parent.getGhosts().stream()
+                .anyMatch(ghost -> ghost != this && ghost.getX() == newX && ghost.getY() == newY);
     }
 
     private void updatePosition(int newX, int newY) {
         synchronized (board) {
-            if (board[newY][newX] == 'P') {
+            if (board[newY][newX] == 'P' || board[y][x] == 'P') {
                 parent.decreaseLives();
                 parent.restartMap();
             } else {
-                board[y][x] = 'E';
+                char c = board[newY][newX];
+                if (c == 'G') c = 'F';
+                board[y][x] = c;
                 x = newX;
                 y = newY;
                 board[y][x] = 'G';

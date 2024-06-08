@@ -42,6 +42,8 @@ public class BoardGenerator {
                         gridPanel.addKeyListener(pacman);
                         label.setLayout(new BorderLayout());
                         label.add(pacman, BorderLayout.CENTER);
+                        label.setHorizontalAlignment(JLabel.CENTER);
+                        label.setVerticalAlignment(JLabel.CENTER);
                         label.setBackground(Color.BLACK);
                         break;
                     case 'G':
@@ -50,6 +52,8 @@ public class BoardGenerator {
                             board.getGhosts().add(ghost);
                             label.setLayout(new BorderLayout());
                             label.add(ghost);
+                            label.setHorizontalAlignment(JLabel.CENTER);
+                            label.setVerticalAlignment(JLabel.CENTER);
                             label.setBackground(Color.BLACK);
                         } else {
                             label.setLayout(new BorderLayout());
