@@ -11,6 +11,7 @@ public class MenuWindow extends JFrame {
   public MenuWindow() {
 
     setTitle("Pacman Game");
+    setIconImage(new ImageIcon("src/main/resources/images/16px/ghost/ghost.png").getImage());
     setSize(800, 600);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
