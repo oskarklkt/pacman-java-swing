@@ -1,5 +1,6 @@
 package com.example.pacman.panel.board;
 
+import com.example.pacman.character.Pacman;
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
 import com.example.pacman.window.GameWindow;
@@ -17,8 +18,8 @@ public class ClassicBoard extends Board {
     char[][] board = {
             {'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'},
             {'W', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'W'},
-            {'W', 'F', 'W', 'F', 'F', 'W', 'W', 'F', 'W', 'W', 'F', 'F', 'W', 'F', 'W'},
-            {'W', 'F', 'W', 'W', 'F', 'W', 'F', 'F', 'F', 'W', 'F', 'F', 'W', 'F', 'W'},
+            {'W', 'F', 'W', 'F', 'F', 'W', 'W', 'G', 'W', 'W', 'F', 'F', 'W', 'F', 'W'},
+            {'W', 'F', 'W', 'W', 'F', 'W', 'G', 'G', 'G', 'W', 'F', 'F', 'W', 'F', 'W'},
             {'W', 'F', 'W', 'F', 'F', 'W', 'W', 'W', 'W', 'W', 'F', 'W', 'W', 'F', 'W'},
             {'W', 'F', 'W', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'W', 'F', 'W'},
             {'W', 'F', 'F', 'F', 'F', 'W', 'W', 'W', 'W', 'W', 'F', 'F', 'F', 'F', 'W'},

@@ -36,4 +36,7 @@ public class GameWindow extends JFrame {
     public void addPoints(int points) {
         topPanel.increaseScore(points);
     }
+    public void decreaseLives() {
+        topPanel.decreaseLives();
+    }
 }

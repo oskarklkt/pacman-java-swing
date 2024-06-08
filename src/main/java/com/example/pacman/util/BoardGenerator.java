@@ -1,4 +1,6 @@
 package com.example.pacman.util;
+
+import com.example.pacman.character.Ghost;
 import com.example.pacman.character.Pacman;
 import com.example.pacman.panel.board.Board;
 
@@ -30,7 +32,7 @@ public class BoardGenerator {
                         break;
                     case 'P':
                         Pacman pacman;
-                        if (board.getPacman() == null)  {
+                        if (board.getPacman() == null) {
                             pacman = new Pacman(board, x, y);
                             board.setPacman(pacman);
                         } else {
@@ -41,6 +43,19 @@ public class BoardGenerator {
                         label.setLayout(new BorderLayout());
                         label.add(pacman, BorderLayout.CENTER);
                         label.setBackground(Color.BLACK);
+                        break;
+                    case 'G':
+                        if (board.getGhosts().size() < 5) {
+                            Ghost ghost = new Ghost(board, x, y);
+                            board.getGhosts().add(ghost);
+                            label.setLayout(new BorderLayout());
+                            label.add(ghost);
+                            label.setBackground(Color.BLACK);
+                        } else {
+                            label.setLayout(new BorderLayout());
+                            label.setIcon(new ImageIcon(board.getBoardSize().getPhotosUrl() + "/ghost/ghost.png"));
+                            label.setBackground(Color.BLACK);
+                        }
                         break;
                     default:
                         label.setBackground(Color.BLACK);

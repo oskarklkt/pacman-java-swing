@@ -1,5 +1,6 @@
 package com.example.pacman.panel.board;
 
+import com.example.pacman.character.Ghost;
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
 import com.example.pacman.util.BoardGenerator;
@@ -8,18 +9,20 @@ import com.example.pacman.window.GameWindow;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Board extends JPanel {
   private final BoardType boardType;
   private final BoardSize boardSize;
   private final int numberOfYBlocks;
   private final int numberOfXBlocks;
-
   private Pacman pacman;
-
+  private List<Ghost> ghosts = new ArrayList<>();
   private char[][] board;
-
-    private final GameWindow parent;
+  private char[][] startingBoard;
+  private final GameWindow parent;
+  private boolean needsRender = false;
 
   public Board(BoardSize boardSize, BoardType boardType, int numberOfYBlocks, int numberOfXBlocks, GameWindow parent) {
     this.boardSize = boardSize;
@@ -27,11 +30,26 @@ public abstract class Board extends JPanel {
     this.numberOfYBlocks = numberOfYBlocks;
     this.numberOfXBlocks = numberOfXBlocks;
     this.parent = parent;
+    this.startingBoard = board;
     setPreferredSize(new Dimension(boardSize.getWidth(), boardSize.getHeight()));
     setLayout(new BorderLayout());
     this.requestFocusInWindow();
-  }
 
+    Thread renderThread = new Thread(() -> {
+      while (true) {
+        try {
+          Thread.sleep(16); // Approximately 60 FPS
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+        if (needsRender) {
+          generate();
+          needsRender = false;
+        }
+      }
+    });
+    renderThread.start();
+  }
 
   @Override
   public GameWindow getParent() {
@@ -67,12 +85,18 @@ public abstract class Board extends JPanel {
   }
 
   public void generate() {
-    this.removeAll();
-    JPanel gridPanel = BoardGenerator.generateBoard(this);
-    this.add(gridPanel, BorderLayout.CENTER);
-    gridPanel.setFocusable(true);
-    gridPanel.requestFocusInWindow();
-    this.revalidate();
+    synchronized (this) {
+      this.removeAll();
+      JPanel gridPanel = BoardGenerator.generateBoard(this);
+      this.add(gridPanel, BorderLayout.CENTER);
+      gridPanel.setFocusable(true);
+      gridPanel.requestFocusInWindow();
+      this.revalidate();
+    }
+  }
+
+  public void requestRender() {
+    needsRender = true;
   }
 
   public void addPointsForEatenFood() {
@@ -81,5 +105,20 @@ public abstract class Board extends JPanel {
 
   public BoardType getBoardType() {
     return boardType;
+  }
+
+  public List<Ghost> getGhosts() {
+    return ghosts;
+  }
+
+  public void restartMap() {
+    synchronized (board) {
+      board = startingBoard;
+      requestRender();
+    }
+  }
+
+  public void decreaseLives() {
+    parent.decreaseLives();
   }
 }

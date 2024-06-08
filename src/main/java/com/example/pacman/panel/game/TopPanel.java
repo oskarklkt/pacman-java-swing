@@ -19,4 +19,5 @@ public class TopPanel extends JPanel {
     public void increaseScore(int points) {
         scorePanel.increaseScore(points);
     }
+    public void decreaseLives() {livesPanel.decreaseLives();}
 }

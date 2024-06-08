@@ -86,16 +86,25 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
 
         updateImage();
 
-        if (newX >= 0 && newX < board[0].length && newY >= 0 && newY < board.length && board[newY][newX] != 'W') {
-            if (board[newY][newX] == 'F') {
-                parent.addPointsForEatenFood();
-                board[newY][newX] = 'E';
+        boolean moved = false;
+        synchronized (board) {
+            if (newX >= 0 && newX < board[0].length && newY >= 0 && newY < board.length && board[newY][newX] != 'W') {
+                if (board[newY][newX] == 'F') {
+                    parent.addPointsForEatenFood();
+                    board[newY][newX] = 'E';
+                } else if (board[y][x] == 'G' || board[newY][x] == 'G') {
+                    parent.decreaseLives();
+                    parent.restartMap();
+                }
+                board[y][x] = 'E';
+                x = newX;
+                y = newY;
+                board[y][x] = 'P';
+                moved = true;
             }
-            board[y][x] = 'E';
-            x = newX;
-            y = newY;
-            board[y][x] = 'P';
-            parent.generate();
+        }
+        if (moved) {
+            parent.requestRender();
         }
     }
 
