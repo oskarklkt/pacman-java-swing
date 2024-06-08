@@ -5,11 +5,12 @@ import java.awt.*;
 
 public class LivesPanel extends JPanel {
     private int lives;
+    private JLabel livesLabel;
 
     public LivesPanel() {
         lives = 3;
-        JLabel livesLabel = new JLabel(getLivesLabel());
-        livesLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD,20));
+        livesLabel = new JLabel(getLivesLabel());
+        livesLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         add(livesLabel);
     }
 
@@ -17,11 +18,16 @@ public class LivesPanel extends JPanel {
         return lives == 3 ? "❤ ❤ ❤" : lives == 2 ? "❤ ❤" : lives == 1 ? "❤" : "Dead";
     }
 
+    private void updateLabel() {
+        livesLabel.setText(getLivesLabel());
+    }
+
     public void decreaseLives() {
         if (lives > 0) {
             lives--;
+            updateLabel();
         } else {
-            //TODO game over logic
+            // TODO game over logic
         }
     }
 
