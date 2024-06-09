@@ -17,11 +17,11 @@ public abstract class Board extends JPanel {
   private final BoardSize boardSize;
   private final int numberOfYBlocks;
   private final int numberOfXBlocks;
+  private final GameWindow parent;
+  protected char[][] startingBoard;
   private Pacman pacman;
   private List<Ghost> ghosts = new ArrayList<>();
   private char[][] board;
-  protected char[][] startingBoard;
-  private final GameWindow parent;
   private boolean needsRender = false;
 
   public Board(BoardSize boardSize, BoardType boardType, int numberOfYBlocks, int numberOfXBlocks, GameWindow parent) {
@@ -67,12 +67,12 @@ public abstract class Board extends JPanel {
     return numberOfXBlocks;
   }
 
-  public void setBoard(char[][] board) {
-    this.board = board;
-  }
-
   public char[][] getBoard() {
     return board;
+  }
+
+  public void setBoard(char[][] board) {
+    this.board = board;
   }
 
   public Pacman getPacman() {
@@ -98,8 +98,8 @@ public abstract class Board extends JPanel {
     needsRender = true;
   }
 
-  public void addPointsForEatenFood() {
-    getParent().addPoints(10);
+  public void addPoints(int points) {
+    getParent().addPoints(points);
   }
 
   public BoardType getBoardType() {

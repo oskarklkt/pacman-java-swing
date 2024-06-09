@@ -1,5 +1,9 @@
 package com.example.pacman.enumeration;
 
+import com.example.pacman.character.Ghost;
+import com.example.pacman.panel.game.LivesPanel;
+import com.example.pacman.panel.game.ScorePanel;
+
 import java.util.Arrays;
 
 public enum Boost {
@@ -19,22 +23,50 @@ public enum Boost {
         this.isTurnedOn = false;
     }
 
-    public void turnOn(Boost boost) {
-        for (Boost b : Boost.values()) {
-            b.turnOff(b);
-        }
-        boost.isTurnedOn = true;
-    }
-
-    public void turnOff(Boost boost) {
-        boost.isTurnedOn = false;
-    }
-
     public static Boost getByChar(char c) {
         return Arrays.stream(values())
                 .filter(b -> b.getSign() == c)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("No Boost found for character: " + c));
+    }
+
+    public void turnOn() {
+        for (Boost b : Boost.values()) {
+            b.turnOff();
+        }
+        isTurnedOn = true;
+
+        if (this.equals(DOUBLE_POINTS)) {
+            ScorePanel.setMultiplier(2);
+        }
+
+        if (this.equals(SLOWER_GHOSTS)) {
+            Ghost.setSleepTime(500);
+        }
+
+        if (this.equals(FROZEN_GHOSTS)) {
+            Ghost.setSleepTime(2000);
+        }
+
+        if (this.equals(ADDITIONAL_LIVE)) {
+            LivesPanel.addLive();
+        }
+    }
+
+  public void turnOff() {
+        this.isTurnedOn = false;
+
+        if (this.equals(DOUBLE_POINTS)) {
+          ScorePanel.setMultiplier(1);
+        }
+
+        if (this.equals(SLOWER_GHOSTS)) {
+          Ghost.setSleepTime(300);
+        }
+
+      if (this.equals(FROZEN_GHOSTS)) {
+          Ghost.setSleepTime(300);
+      }
     }
 
     public char getSign() {

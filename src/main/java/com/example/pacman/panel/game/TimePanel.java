@@ -15,6 +15,11 @@ public class TimePanel extends JPanel implements Runnable {
         add(timer);
         startTimer();
     }
+
+    public static int getSeconds() {
+        return seconds;
+    }
+
     @Override
     public void run() {
         while (!stop) {
@@ -44,9 +49,5 @@ public class TimePanel extends JPanel implements Runnable {
 
     public void stopTimer() {
         stop = true;
-    }
-
-    public static int getSeconds() {
-        return seconds;
     }
 }

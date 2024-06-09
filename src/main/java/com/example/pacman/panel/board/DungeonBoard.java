@@ -35,6 +35,5 @@ public class DungeonBoard extends Board {
     }
     setBoard(board);
     generate();
-
   }
 }

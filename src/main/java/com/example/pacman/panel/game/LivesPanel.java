@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LivesPanel extends JPanel {
-    private int lives;
-    private JLabel livesLabel;
+    private static int lives;
+    private static JLabel livesLabel;
 
     public LivesPanel() {
         lives = 3;
@@ -14,21 +14,25 @@ public class LivesPanel extends JPanel {
         add(livesLabel);
     }
 
-    private String getLivesLabel() {
+    private static String getLivesLabel() {
         return lives == 3 ? "❤ ❤ ❤" : lives == 2 ? "❤ ❤" : lives == 1 ? "❤" : "Dead";
     }
 
-    private void updateLabel() {
+    private static void updateLabel() {
         livesLabel.setText(getLivesLabel());
+    }
+
+    public static void addLive() {
+        if (lives < 3) {
+            lives++;
+            updateLabel();
+        }
     }
 
     public void decreaseLives() {
         if (lives > 0) {
             lives--;
             updateLabel();
-        } else {
-            // TODO game over logic
         }
     }
-
 }

@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ScorePanel extends JPanel implements Runnable {
-    private volatile int score;
-    private final JLabel scoreCounter;
-    private volatile Boolean stop;
     private static int multiplier = 1;
+    private final JLabel scoreCounter;
+    private volatile int score;
+    private volatile Boolean stop;
     public ScorePanel() {
         stop = false;
         score = 0;
@@ -15,6 +15,14 @@ public class ScorePanel extends JPanel implements Runnable {
         scoreCounter.setFont(new Font(Font.SANS_SERIF, Font.BOLD,20));
         add(scoreCounter);
         startScore();
+    }
+
+    public static int getMultiplier() {
+        return multiplier;
+    }
+
+    public static void setMultiplier(int multiplier) {
+        ScorePanel.multiplier = multiplier;
     }
 
     @Override
@@ -46,9 +54,5 @@ public class ScorePanel extends JPanel implements Runnable {
 
     public void stopScore() {
         stop = true;
-    }
-
-    public void setMultiplier(int multiplier) {
-        ScorePanel.multiplier = multiplier;
     }
 }
