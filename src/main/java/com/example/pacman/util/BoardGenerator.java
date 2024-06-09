@@ -2,6 +2,7 @@ package com.example.pacman.util;
 
 import com.example.pacman.character.Ghost;
 import com.example.pacman.character.Pacman;
+import com.example.pacman.enumeration.Boost;
 import com.example.pacman.panel.board.Board;
 
 import javax.swing.*;
@@ -60,6 +61,13 @@ public class BoardGenerator {
                             label.setIcon(new ImageIcon(board.getBoardSize().getPhotosUrl() + "/ghost/ghost.png"));
                             label.setBackground(Color.BLACK);
                         }
+                        break;
+                    case '0', '1', '2', '3', '4':
+                        label.setBackground(Color.BLACK);
+                        label.setHorizontalAlignment(JLabel.CENTER);
+                        label.setVerticalAlignment(JLabel.CENTER);
+                        ImageIcon icon = new ImageIcon(board.getBoardSize().getPhotosUrl() + Boost.getByChar(board.getBoard()[y][x]).getPathToPng());
+                        label.setIcon(icon);
                         break;
                     default:
                         label.setBackground(Color.BLACK);

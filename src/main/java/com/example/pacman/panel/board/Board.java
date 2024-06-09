@@ -119,7 +119,7 @@ public abstract class Board extends JPanel {
         }
       }
       pacman = null;
-      generate();  // Ensure board is generated with new instances of Pacman and ghosts
+      generate();
     }
   }
 

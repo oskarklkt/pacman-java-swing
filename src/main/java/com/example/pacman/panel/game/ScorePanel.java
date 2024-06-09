@@ -7,6 +7,7 @@ public class ScorePanel extends JPanel implements Runnable {
     private volatile int score;
     private final JLabel scoreCounter;
     private volatile Boolean stop;
+    private static int multiplier = 1;
     public ScorePanel() {
         stop = false;
         score = 0;
@@ -22,7 +23,7 @@ public class ScorePanel extends JPanel implements Runnable {
         while (!stop)
             try {
                 Thread.sleep(1000);
-                increaseScore(1);
+                increaseScore(multiplier);
                 updateScoreCounter();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
@@ -35,7 +36,7 @@ public class ScorePanel extends JPanel implements Runnable {
     }
 
     public synchronized void increaseScore(int addition) {
-        score+=addition;
+        score+=(multiplier * addition);
         updateScoreCounter();
     }
 
@@ -45,5 +46,9 @@ public class ScorePanel extends JPanel implements Runnable {
 
     public void stopScore() {
         stop = true;
+    }
+
+    public void setMultiplier(int multiplier) {
+        ScorePanel.multiplier = multiplier;
     }
 }

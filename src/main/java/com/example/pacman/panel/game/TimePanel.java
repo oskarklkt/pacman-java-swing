@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TimePanel extends JPanel implements Runnable {
-    private int seconds;
+    private static int seconds;
     private final JLabel timer;
 
     private Boolean stop = false;
@@ -44,5 +44,9 @@ public class TimePanel extends JPanel implements Runnable {
 
     public void stopTimer() {
         stop = true;
+    }
+
+    public static int getSeconds() {
+        return seconds;
     }
 }

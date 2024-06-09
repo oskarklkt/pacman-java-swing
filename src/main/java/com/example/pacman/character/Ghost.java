@@ -1,6 +1,7 @@
 package com.example.pacman.character;
 
 import com.example.pacman.panel.board.Board;
+import com.example.pacman.panel.game.TimePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ public class Ghost extends JLabel implements Runnable {
     private int x, y;
     private final int startX, startY;
     boolean isStopped;
-    private static int sleepTime = 200;
+    private static int sleepTime = 300;
     private final Random random = new Random();
 
     public Ghost(Board parent, int startX, int startY) {
@@ -93,9 +94,15 @@ public class Ghost extends JLabel implements Runnable {
                 parent.decreaseLives();
                 parent.restartMap();
             } else {
-                char c = board[newY][newX];
-                if (c == 'G') c = 'F';
-                board[y][x] = c;
+                Random random = new Random();
+                if (TimePanel.getSeconds() != 0 && TimePanel.getSeconds() % 20 == 0 && random.nextInt(4) == 0 ) {
+                    int boostNumber = random.nextInt(5);
+                    board[y][x] = Character.forDigit(boostNumber, 10);
+                } else {
+                  char c = board[newY][newX];
+                  if (c == 'G') c = 'F';
+                  board[y][x] = c;
+                }
                 x = newX;
                 y = newY;
                 board[y][x] = 'G';
