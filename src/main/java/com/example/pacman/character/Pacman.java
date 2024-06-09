@@ -131,7 +131,7 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
         } else if (board[newY][newX] == '3') {
           Boost.FROZEN_GHOSTS.turnOn();
         } else if (board[newY][newX] == '4') {
-          Boost.FROZEN_GHOSTS.turnOn();
+          Boost.ADDITIONAL_LIVE.turnOn();
         }
         board[y][x] = 'E';
         x = newX;
