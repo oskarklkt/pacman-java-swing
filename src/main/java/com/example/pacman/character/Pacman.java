@@ -92,6 +92,7 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
         break;
       case KeyEvent.VK_ESCAPE:
         parent.getParent().dispose();
+        SwingUtilities.invokeLater(MenuWindow::new);
         break;
     }
 
