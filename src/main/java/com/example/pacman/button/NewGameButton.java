@@ -46,7 +46,6 @@ public class NewGameButton extends Button implements ActionListener {
                   boardOptions[0]);
 
       if (boardType != null) {
-        parentWindow.dispose();
         new GameWindow(boardSize, boardType);
       } else {
         JOptionPane.showMessageDialog(

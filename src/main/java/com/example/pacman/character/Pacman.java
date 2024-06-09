@@ -5,6 +5,7 @@ import com.example.pacman.enumeration.Boost;
 import com.example.pacman.enumeration.Direction;
 import com.example.pacman.panel.board.Board;
 import com.example.pacman.panel.game.ScorePanel;
+import com.example.pacman.window.MenuWindow;
 
 import javax.swing.*;
 import java.awt.*;
@@ -88,6 +89,9 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
       case KeyEvent.VK_RIGHT:
         currentDirection = Direction.RIGHT;
         newX++;
+        break;
+      case KeyEvent.VK_ESCAPE:
+        parent.getParent().dispose();
         break;
     }
 
