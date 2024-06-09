@@ -19,6 +19,7 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
     private final Board parent;
     private int x, y;
 
+
     public Pacman(Board parent, int startX, int startY) {
         this.boardSize = parent.getBoardSize();
         this.parent = parent;

@@ -112,7 +112,7 @@ public abstract class Board extends JPanel {
 
   public void restartMap() {
     synchronized (this) {
-      // Reset the board to its initial state
+      for (Ghost g : ghosts) {g.resetCoordinates();}
       for (int y = 0; y < startingBoard.length; y++) {
         for (int x = 0; x < startingBoard[0].length; x++) {
           board[y][x] = startingBoard[y][x];

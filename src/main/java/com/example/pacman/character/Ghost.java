@@ -11,16 +11,19 @@ public class Ghost extends JLabel implements Runnable {
     private final Board parent;
     private final char[][] board;
     private int x, y;
+    private final int startX, startY;
     boolean isStopped;
     private static int sleepTime = 200;
     private final Random random = new Random();
 
-    public Ghost(Board parent, int x, int y) {
+    public Ghost(Board parent, int startX, int startY) {
         isStopped = false;
         this.parent = parent;
         this.board = parent.getBoard();
-        this.x = x;
-        this.y = y;
+        this.x = startX;
+        this.y = startY;
+        this.startX = startX;
+        this.startY = startY;
         setBackground(Color.BLACK);
         setIcon(new ImageIcon(parent.getBoardSize().getPhotosUrl() + "/ghost/ghost.png"));
         startGhost();
@@ -98,6 +101,11 @@ public class Ghost extends JLabel implements Runnable {
                 board[y][x] = 'G';
             }
         }
+    }
+
+    public void resetCoordinates() {
+        this.x = startX;
+        this.y = startY;
     }
 
     public int getX() {
