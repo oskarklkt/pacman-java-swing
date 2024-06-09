@@ -35,7 +35,7 @@ public class GameWindow extends JFrame {
     add(board, BorderLayout.CENTER);
     setLocationRelativeTo(null);
     setVisible(true);
-    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
 
   public void addPoints(int points) {
