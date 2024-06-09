@@ -6,8 +6,8 @@ import java.awt.*;
 public class ScorePanel extends JPanel implements Runnable {
     private static int multiplier = 1;
     private final JLabel scoreCounter;
-    private volatile int score;
-    private volatile Boolean stop;
+    private static volatile int score;
+    private static volatile Boolean stop;
     public ScorePanel() {
         stop = false;
         score = 0;
@@ -52,7 +52,28 @@ public class ScorePanel extends JPanel implements Runnable {
         scoreCounter.setText("Score: " + score);
     }
 
-    public void stopScore() {
+    public static void stopScore() {
         stop = true;
+    }
+
+
+    public JLabel getScoreCounter() {
+        return scoreCounter;
+    }
+
+    public static int getScore() {
+        return score;
+    }
+
+    public static void setScore(int score) {
+        ScorePanel.score = score;
+    }
+
+    public static Boolean getStop() {
+        return stop;
+    }
+
+    public static void setStop(Boolean stop) {
+        ScorePanel.stop = stop;
     }
 }

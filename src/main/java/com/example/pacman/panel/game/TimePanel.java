@@ -7,7 +7,7 @@ public class TimePanel extends JPanel implements Runnable {
     private static int seconds;
     private final JLabel timer;
 
-    private Boolean stop = false;
+    private static Boolean stop = false;
 
     public TimePanel () {
         timer = new JLabel("Time: 00:00");
@@ -34,6 +34,10 @@ public class TimePanel extends JPanel implements Runnable {
 
     }
 
+    public static void stopTimer() {
+        stopTimer();
+    }
+
     private void startTimer() {
         Thread timer = new Thread(this);
         timer.start();
@@ -47,7 +51,7 @@ public class TimePanel extends JPanel implements Runnable {
         seconds++;
     }
 
-    public void stopTimer() {
+    public static void stop() {
         stop = true;
     }
 }

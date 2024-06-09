@@ -15,7 +15,7 @@ public class LivesPanel extends JPanel {
     }
 
     private static String getLivesLabel() {
-        return lives == 3 ? "❤ ❤ ❤" : lives == 2 ? "❤ ❤" : lives == 1 ? "❤" : "Dead";
+    return lives == 3 ? "❤ ❤ ❤" : lives == 2 ? "❤ ❤" : lives == 1 ? "❤" : "Game over";
     }
 
     private static void updateLabel() {
@@ -34,5 +34,9 @@ public class LivesPanel extends JPanel {
             lives--;
             updateLabel();
         }
+    }
+
+    public static int getLives() {
+        return lives;
     }
 }

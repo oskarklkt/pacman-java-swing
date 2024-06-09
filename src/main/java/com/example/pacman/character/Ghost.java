@@ -187,4 +187,6 @@ public class Ghost extends JLabel implements Runnable {
     public Random getRandom() {
         return random;
     }
+
+
 }

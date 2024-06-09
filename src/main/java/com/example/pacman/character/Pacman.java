@@ -4,7 +4,10 @@ import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.Boost;
 import com.example.pacman.enumeration.Direction;
 import com.example.pacman.panel.board.Board;
+import com.example.pacman.panel.game.LivesPanel;
 import com.example.pacman.panel.game.ScorePanel;
+import com.example.pacman.panel.game.TimePanel;
+import com.example.pacman.util.HighScoreUtil;
 import com.example.pacman.window.MenuWindow;
 
 import javax.swing.*;
@@ -112,6 +115,19 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
           if (!Boost.EDIBLE_GHOSTS.getTurnedOn()) {
             parent.decreaseLives();
             parent.restartMap();
+            if (LivesPanel.getLives() == 0) {
+              parent.getGhosts().forEach(g -> g.setStopped(true));
+              ScorePanel.stopScore();
+              int score = ScorePanel.getScore();
+              String nickname = JOptionPane.showInputDialog(parent, "Enter your nickname:", "Game Over", JOptionPane.PLAIN_MESSAGE);
+              if (nickname != null && !nickname.trim().isEmpty()) {
+                HighScoreUtil.readHighScores();
+                HighScoreUtil.addHighScore(nickname, score);
+              }
+              parent.getParent().dispose();
+              SwingUtilities.invokeLater(MenuWindow::new);
+
+            }
             Arrays.stream(Boost.values()).forEach(Boost::turnOff);
           } else {
             Ghost ghost = Ghost.getGhostByPosition(newX, newY);
