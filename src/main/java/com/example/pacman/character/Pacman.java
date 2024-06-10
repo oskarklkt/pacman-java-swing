@@ -6,7 +6,6 @@ import com.example.pacman.enumeration.Direction;
 import com.example.pacman.panel.board.Board;
 import com.example.pacman.panel.game.LivesPanel;
 import com.example.pacman.panel.game.ScorePanel;
-import com.example.pacman.panel.game.TimePanel;
 import com.example.pacman.util.HighScoreUtil;
 import com.example.pacman.window.MenuWindow;
 
@@ -39,7 +38,6 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
     isAnimationStopped = false;
     setIcon(new ImageIcon(boardSize.getPhotosUrl() + currentDirection.getOpenedPhotoPath()));
 
-    // Centering Pacman within the JLabel
     setHorizontalAlignment(JLabel.CENTER);
     setVerticalAlignment(JLabel.CENTER);
 
@@ -67,10 +65,6 @@ public class Pacman extends JLabel implements KeyListener, Runnable {
                 ? currentDirection.getOpenedPhotoPath()
                 : currentDirection.getClosedPhotoPath());
     setIcon(new ImageIcon(imagePath));
-  }
-
-  public void stopAnimation() {
-    isAnimationStopped = true;
   }
 
   @Override

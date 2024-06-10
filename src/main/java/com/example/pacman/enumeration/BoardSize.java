@@ -20,10 +20,6 @@ public enum BoardSize {
     this.photosUrl = photosUrl;
   }
 
-  public String getName() {
-    return name;
-  }
-
   public int getWidth() {
     return width;
   }

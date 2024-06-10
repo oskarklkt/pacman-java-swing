@@ -1,23 +1,26 @@
 package com.example.pacman.enumeration;
 
 import com.example.pacman.character.Ghost;
+import com.example.pacman.panel.game.BoostPanel;
 import com.example.pacman.panel.game.LivesPanel;
 import com.example.pacman.panel.game.ScorePanel;
 
 import java.util.Arrays;
 
 public enum Boost {
-    EDIBLE_GHOSTS('0', "/boost/edible.png"),
-    DOUBLE_POINTS('1', "/boost/double.png"),
-    SLOWER_GHOSTS('2', "/boost/slower.png"),
-    FROZEN_GHOSTS('3', "/boost/frozen.png" ),
-    ADDITIONAL_LIVE('4', "/boost/live.png");
+    EDIBLE_GHOSTS("Ghost killer!", '0', "/boost/edible.png"),
+    DOUBLE_POINTS("2x Points!",'1', "/boost/double.png"),
+    SLOWER_GHOSTS("Slower Ghosts!", '2', "/boost/slower.png"),
+    FROZEN_GHOSTS("Frozen ghosts!", '3', "/boost/frozen.png" ),
+    ADDITIONAL_LIVE("Additional live!",'4', "/boost/live.png");
 
+    private final String name;
     private final char sign;
     private final String pathToPng;
     private Boolean isTurnedOn;
 
-    Boost(char sign, String pathToPng) {
+    Boost(String name, char sign, String pathToPng) {
+        this.name = name;
         this.sign = sign;
         this.pathToPng = pathToPng;
         this.isTurnedOn = false;
@@ -51,6 +54,8 @@ public enum Boost {
         if (this.equals(ADDITIONAL_LIVE)) {
             LivesPanel.addLive();
         }
+
+        BoostPanel.setBoostLabel("Current Boost: " + this.getName());
     }
 
   public void turnOff() {
@@ -67,6 +72,9 @@ public enum Boost {
       if (this.equals(FROZEN_GHOSTS)) {
           Ghost.setSleepTime(300);
       }
+
+      BoostPanel.setBoostLabel("Current Boost: None");
+
     }
 
     public char getSign() {
@@ -79,5 +87,9 @@ public enum Boost {
 
     public Boolean getTurnedOn() {
         return isTurnedOn;
+    }
+
+    public String getName() {
+        return name;
     }
 }

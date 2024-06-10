@@ -15,13 +15,16 @@ public class MenuWindow extends JFrame {
     setSize(800, 600);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
-    setLayout(new GridLayout(3, 1));
+    setLayout(new GridLayout(4, 1));
     setVisible(true);
 
+    JLabel jLabel = new JLabel();
+    jLabel.setIcon(new ImageIcon("src/main/resources/images/banner.png"));
     JButton newGameButton = new NewGameButton(this);
     JButton highScoresButton = new HighScoresButton();
     JButton exitButton = new ExitButton(this);
 
+    add(jLabel);
     add(newGameButton);
     add(highScoresButton);
     add(exitButton);

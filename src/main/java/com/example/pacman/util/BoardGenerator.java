@@ -40,7 +40,6 @@ public class BoardGenerator {
             } else {
               pacman = board.getPacman();
             }
-            // Register Pacman as a KeyListener
             gridPanel.addKeyListener(pacman);
             label.setLayout(new BorderLayout());
             label.add(pacman, BorderLayout.CENTER);

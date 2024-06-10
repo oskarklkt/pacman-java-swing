@@ -13,10 +13,6 @@ public enum BoardType {
     this.name = label;
   }
 
-  public String getLabel() {
-    return name;
-  }
-
   @Override
   public String toString() {
     return name;

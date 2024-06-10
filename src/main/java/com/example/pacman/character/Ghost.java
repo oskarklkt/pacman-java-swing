@@ -38,10 +38,6 @@ public class Ghost extends JLabel implements Runnable {
         return ghosts.stream().filter(g -> g.getX() == x && g.getY() == y).findFirst().orElseThrow(NoSuchElementException::new);
     }
 
-    public static int getSleepTime() {
-        return sleepTime;
-    }
-
     public static void setSleepTime(int sleepTime) {
         Ghost.sleepTime = sleepTime;
     }
@@ -136,10 +132,10 @@ public class Ghost extends JLabel implements Runnable {
 
     public void resetCoordinates() {
         synchronized (board) {
-            board[y][x] = 'E'; // Mark current ghost position as empty
+            board[y][x] = 'E';
             this.x = startX;
             this.y = startY;
-            board[y][x] = 'G'; // Reset ghost position on board
+            board[y][x] = 'G';
         }
     }
 
@@ -147,16 +143,8 @@ public class Ghost extends JLabel implements Runnable {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
     public int getY() {
         return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 
     @Override
@@ -168,25 +156,10 @@ public class Ghost extends JLabel implements Runnable {
         return board;
     }
 
-    public int getStartX() {
-        return startX;
-    }
-
-    public int getStartY() {
-        return startY;
-    }
-
-    public boolean isStopped() {
-        return isStopped;
-    }
-
     public void setStopped(boolean stopped) {
         isStopped = stopped;
     }
 
-    public Random getRandom() {
-        return random;
-    }
 
 
 }

@@ -1,7 +1,8 @@
 package com.example.pacman.panel.game;
 
+import com.example.pacman.font.TopPanelFont;
+
 import javax.swing.*;
-import java.awt.*;
 
 public class TimePanel extends JPanel implements Runnable {
     private static int seconds;
@@ -11,7 +12,7 @@ public class TimePanel extends JPanel implements Runnable {
 
     public TimePanel () {
         timer = new JLabel("Time: 00:00");
-        timer.setFont(new Font(Font.SANS_SERIF, Font.BOLD,20));
+        timer.setFont(new TopPanelFont());
         add(timer);
         startTimer();
     }
@@ -34,10 +35,6 @@ public class TimePanel extends JPanel implements Runnable {
 
     }
 
-    public static void stopTimer() {
-        stopTimer();
-    }
-
     private void startTimer() {
         Thread timer = new Thread(this);
         timer.start();
@@ -49,9 +46,5 @@ public class TimePanel extends JPanel implements Runnable {
 
     private synchronized void increaseSeconds() {
         seconds++;
-    }
-
-    public static void stop() {
-        stop = true;
     }
 }

@@ -1,7 +1,8 @@
 package com.example.pacman.panel.game;
 
+import com.example.pacman.font.TopPanelFont;
+
 import javax.swing.*;
-import java.awt.*;
 
 public class ScorePanel extends JPanel implements Runnable {
     private static int multiplier = 1;
@@ -12,13 +13,9 @@ public class ScorePanel extends JPanel implements Runnable {
         stop = false;
         score = 0;
         scoreCounter = new JLabel("Score: " + score);
-        scoreCounter.setFont(new Font(Font.SANS_SERIF, Font.BOLD,20));
+        scoreCounter.setFont(new TopPanelFont());
         add(scoreCounter);
         startScore();
-    }
-
-    public static int getMultiplier() {
-        return multiplier;
     }
 
     public static void setMultiplier(int multiplier) {
@@ -26,12 +23,11 @@ public class ScorePanel extends JPanel implements Runnable {
     }
 
     @Override
-    // every one second we get 1 point
     public void run() {
         while (!stop)
             try {
                 Thread.sleep(1000);
-                increaseScore(multiplier);
+                increaseScore(1);
                 updateScoreCounter();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
@@ -56,24 +52,7 @@ public class ScorePanel extends JPanel implements Runnable {
         stop = true;
     }
 
-
-    public JLabel getScoreCounter() {
-        return scoreCounter;
-    }
-
     public static int getScore() {
         return score;
-    }
-
-    public static void setScore(int score) {
-        ScorePanel.score = score;
-    }
-
-    public static Boolean getStop() {
-        return stop;
-    }
-
-    public static void setStop(Boolean stop) {
-        ScorePanel.stop = stop;
     }
 }

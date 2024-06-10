@@ -1,7 +1,6 @@
 package com.example.pacman.util;
 
 import com.example.pacman.entity.HighScore;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;

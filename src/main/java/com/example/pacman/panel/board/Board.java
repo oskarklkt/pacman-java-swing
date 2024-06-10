@@ -20,7 +20,7 @@ public abstract class Board extends JPanel {
   private final GameWindow parent;
   protected char[][] startingBoard;
   private Pacman pacman;
-  private List<Ghost> ghosts = new ArrayList<>();
+  private final List<Ghost> ghosts = new ArrayList<>();
   private char[][] board;
   private boolean needsRender = false;
 
@@ -37,7 +37,7 @@ public abstract class Board extends JPanel {
     Thread renderThread = new Thread(() -> {
       while (true) {
         try {
-          Thread.sleep(16); // Approximately 60 FPS
+          Thread.sleep(16);
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
@@ -100,10 +100,6 @@ public abstract class Board extends JPanel {
 
   public void addPoints(int points) {
     getParent().addPoints(points);
-  }
-
-  public BoardType getBoardType() {
-    return boardType;
   }
 
   public List<Ghost> getGhosts() {

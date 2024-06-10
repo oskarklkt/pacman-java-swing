@@ -1,6 +1,5 @@
 package com.example.pacman.panel.board;
 
-import com.example.pacman.character.Pacman;
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
 import com.example.pacman.window.GameWindow;

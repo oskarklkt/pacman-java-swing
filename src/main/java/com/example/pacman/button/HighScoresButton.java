@@ -4,12 +4,10 @@ import com.example.pacman.window.HighScoresWindow;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class HighScoresButton extends Button implements ActionListener {
+public class HighScoresButton extends Button {
   public HighScoresButton() {
     super("High Scores");
-    addActionListener(this);
   }
 
   @Override

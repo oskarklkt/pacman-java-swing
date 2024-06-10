@@ -11,12 +11,11 @@ import java.awt.*;
 
 public class GameWindow extends JFrame {
 
-  private final Board board;
-  private final TopPanel topPanel;
+    private final TopPanel topPanel;
 
   public GameWindow(BoardSize boardSize, BoardType boardType) {
 
-    board = BoardFactory.createBoard(boardSize, boardType, this);
+      Board board = BoardFactory.createBoard(boardSize, boardType, this);
 
     float xRatio =
         (float) board.getNumberOfXBlocks()

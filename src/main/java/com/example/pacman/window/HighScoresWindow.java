@@ -10,15 +10,14 @@ import java.util.List;
 
 public class HighScoresWindow extends JFrame {
   public HighScoresWindow() {
-    List<HighScore> highScores = new ArrayList<>();
-    HighScoreUtil.readHighScores();
-    highScores.addAll(HighScoreUtil.getHighScores());
+      HighScoreUtil.readHighScores();
+      List<HighScore> highScores = new ArrayList<>(HighScoreUtil.getHighScores());
 
 
     JLabel titleLabel = new JLabel("HIGHSCORES", SwingConstants.CENTER);
     titleLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 36));
-    titleLabel.setForeground(Color.WHITE);
-    titleLabel.setBackground(Color.BLUE);
+    titleLabel.setForeground(Color.BLUE);
+    titleLabel.setBackground(Color.BLACK);
     titleLabel.setOpaque(true);
 
 
