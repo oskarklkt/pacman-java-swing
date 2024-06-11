@@ -2,6 +2,8 @@ package com.example.pacman.button;
 
 import com.example.pacman.enumeration.BoardSize;
 import com.example.pacman.enumeration.BoardType;
+import com.example.pacman.panel.game.ScorePanel;
+import com.example.pacman.panel.game.TimePanel;
 import com.example.pacman.window.GameWindow;
 
 import javax.swing.*;
@@ -33,6 +35,7 @@ public class NewGameButton extends Button implements ActionListener {
     }
 
     parentWindow.dispose();
+    TimePanel.reset();
     new GameWindow(boardSize, boardType);
   }
 

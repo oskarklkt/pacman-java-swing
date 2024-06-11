@@ -4,7 +4,6 @@ package com.example.pacman.panel.game;
 import com.example.pacman.font.TopPanelFont;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class BoostPanel extends JPanel {
     private static JLabel boostLabel;

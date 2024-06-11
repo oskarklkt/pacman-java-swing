@@ -22,7 +22,7 @@ public class TimePanel extends JPanel implements Runnable {
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         while (!stop) {
             try {
                 Thread.sleep(1000);
@@ -32,7 +32,6 @@ public class TimePanel extends JPanel implements Runnable {
                 Thread.currentThread().interrupt();
             }
         }
-
     }
 
     private void startTimer() {
@@ -46,5 +45,9 @@ public class TimePanel extends JPanel implements Runnable {
 
     private synchronized void increaseSeconds() {
         seconds++;
+    }
+
+    public static void reset() {
+        seconds = 0;
     }
 }

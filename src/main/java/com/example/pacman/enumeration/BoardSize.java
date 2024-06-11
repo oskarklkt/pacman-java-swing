@@ -10,7 +10,6 @@ public enum BoardSize {
   private final String name;
   private final int width;
   private final int height;
-
   private final String photosUrl;
 
   BoardSize(String name, int width, int height, String photosUrl) {
